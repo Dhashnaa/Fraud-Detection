@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <style>
+        .status-yes { color: green; animation: blink 1s infinite; }
+        .status-no { color: red; animation: blink 1s infinite; }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+
+<style>
+    body {
+        background-color: rgb(9, 153, 231)
+    }
+</style>
+
+<body>
+    <div>
+        <h1 style="text-align:center;font-family:roman;">Prediction Results</h1>
+        <a href="/" style="text-align: left;color:black;text-decoration:none;font-family:roman;font-weight:bold;">Account</a>
+    </div>
+
+    <div style="font-family:roman;text-align:center;">
+        <h2>Random Forest</h2>
+        <p style="font-weight:bold">Accuracy: {{ accuracy_rf }}%</p>
+        <p style="font-weight:bold">F1 Score: {{ f1_rf }}%</p>
+        <p style="font-weight:bold">Status: <span class="{{ 'status-yes' if rf_status == 'Yes' else 'status-no' }}">{{ rf_status }}</span></p>
+        
+        <h2>XGBoost</h2>
+        <p style="font-weight:bold">Accuracy: {{ accuracy_xgb }}%</p>
+        <p style="font-weight:bold">F1 Score: {{ f1_xgb }}%</p>
+        <p style="font-weight:bold;">Status: <span class="{{ 'status-yes' if xgb_status == 'Yes' else 'status-no' }}">{{ xgb_status }}</span></p>
+    </div>
+
+    <div>
+        <h2>Visualizations</h2>
+        {{ pie_chart | safe }}
+    </div>
+
+
+</body>
+</html>

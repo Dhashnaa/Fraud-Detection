@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+    
+    <style>
+        body {
+            background-color: rgb(9, 153, 231)
+        }
+    </style>
+
+    <body>
+
+        
+        <h1 style="font-weight:bold;font-family:Roman;color:black;">Inspired To Designed This Fraud Detection project</h1>
+
+        <div class="slider-container">
+            <div class="slider">
+                {% for image in images %}
+                <div class="slide">
+                    <img src="{{ url_for('static', filename=image.url.split('static/')[1]) }}" alt="{{ image.title }}">
+                    <div class="content">
+                        <h2>{{ image.title }}</h2>
+                        <p>{{ image.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        
+            <!-- Navigation Arrows -->
+            <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+            <a class="next" onclick="moveSlide(1)">&#10095;</a>
+        </div>
+        
+        <script>
+            let slideIndex = 0;
+            showSlide(slideIndex);
+        
+            function moveSlide(n) {
+                showSlide(slideIndex += n);
+            }
+        
+            function showSlide(n) {
+                let slides = document.getElementsByClassName("slide");
+                if (n >= slides.length) { slideIndex = 0 }
+                if (n < 0) { slideIndex = slides.length - 1 }
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slides[slideIndex].style.display = "block";
+            }
+        </script><br><br><br><br>
+
+        <p style="text-align:center;font-weight:bold;">Contact:&nbsp;&nbsp<a href="https://www.forbes.com/advisor/in/credit-card/credit-card-scams/" style="text-decoration:none;color:red;">Forbes&nbsp;&nbsp;<a href="https://www.experian.com/blogs/insights/credit-card-fraud-detection/?msockid=3d22499205506329390a5a27042762a1" style="text-decoration:none;color:red;">Experian&nbsp;&nbsp;<a href="https://medium.com/analytics-vidhya/credit-card-fraud-detection-fd634f70327d" style="text-decoration:none;color:red;">Medium&nbsp;&nbsp;<a href="#" style="text-decoration:none;color:green;">1860 172 0853&nbsp;&nbsp;</p> 
+
+
+    </body>
+
+</html>
